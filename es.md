@@ -130,28 +130,28 @@ Descargue el **archivo comprimido** del **[repositorio](https://github.com/evert
 
 Descomprime el archivo en tu **espacio de trabajo**.
 
-Ejecute el siguiente comando para implementar el mapa de configuración **[configmap-settings](./k8s/configmap-settings.yaml)** que contiene el archivo de configuración de ejecución de Prometheus.
+Ejecute el siguiente comando para implementar el mapa de configuración **[configmap-prometheus-settings](./k8s/configmap-prometheus-settings.yaml)** que contiene el archivo de configuración de ejecución de Prometheus.
 
-`kubectl apply -f ./k8s/configmap-settings.yaml`
+`kubectl apply -f ./k8s/configmap-prometheus-settings.yaml`
 
-Ejecute el siguiente comando para implementar el mapa de configuración **[configmap-alerting](./k8s/configmap-alerting.yaml)** que contiene los **archivos de reglas de alerta**.
-`kubectl apply -f ./k8s/configmap-alerting.yaml`
+Ejecute el siguiente comando para implementar el mapa de configuración **[configmap-prometheus-alerting](./k8s/configmap-prometheus-alerting.yaml)** que contiene los **archivos de reglas de alerta**.
+`kubectl apply -f ./k8s/configmap-prometheus-alerting.yaml`
 
-Ejecute el siguiente comando para implementar el mapa de configuración **[configmap-recording](./k8s/configmap-recording.yaml)** que contiene los **archivos de reglas de grabación**.
+Ejecute el siguiente comando para implementar el mapa de configuración **[configmap-prometheus-recording](./k8s/configmap-prometheus-recording.yaml)** que contiene los **archivos de reglas de grabación**.
 
-`kubectl apply -f ./k8s/configmap-recording.yaml`
+`kubectl apply -f ./k8s/configmap-prometheus-recording.yaml`
 
-Ejecute el siguiente comando para implementar **[statefulset](./k8s/statefulset.yaml)**.
+Ejecute el siguiente comando para implementar **[statefulset-prometheus-prometheus](./k8s/statefulset-prometheus-prometheus.yaml)**.
 
-`kubectl apply -f ./k8s/statefulset.yaml`
+`kubectl apply -f ./k8s/statefulset-prometheus-prometheus.yaml`
 
-Ejecute el siguiente comando para implementar **[servicio](./k8s/service.yaml)**
+Ejecute el siguiente comando para implementar **[svc-prometheus](./k8s/svc-prometheus.yaml)**
 
-`kubectl apply -f ./k8s/service.yaml`
+`kubectl apply -f ./k8s/svc-prometheus.yaml`
 
-Ejecute el siguiente comando para implementar **[ingress](./k8s/ingress.yaml)**
+Ejecute el siguiente comando para implementar **[ingress-prometheus](./k8s/ingress-prometheus.yaml)**
 
-`kubectl apply -f ./k8s/ingress.yaml`
+`kubectl apply -f ./k8s/ingress-prometheus.yaml`
 
 Ejecute el siguiente comando para desplegar la vista de la **dirección IP** de la pantalla de Ingress contenida en el campo **ADDRESS**.
 

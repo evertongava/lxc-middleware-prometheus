@@ -132,29 +132,29 @@ Baixe o **arquivo compactado** do **[repositório](https://github.com/evertongav
 
 Descompacte o arquivo no sua **área de trabalho**.
 
-Execute o comando baixo para implantar o configmap **[configmap-settings](./k8s/configmap-settings.yaml)** contendo o arquivo de configurações de execução do Prometheus.
+Execute o comando baixo para implantar o configmap **[configmap-prometheus-settings](./k8s/configmap-prometheus-settings.yaml)** contendo o arquivo de configurações de execução do Prometheus.
 
-`kubectl apply -f ./k8s/configmap-settings.yaml`
+`kubectl apply -f ./k8s/configmap-prometheus-settings.yaml`
 
-Execute o comando baixo para implantar o configmap **[configmap-alerting](./k8s/configmap-alerting.yaml)** contendo os **arquivos de regras de alerta**.
+Execute o comando baixo para implantar o configmap **[configmap-prometheus-alerting](./k8s/configmap-prometheus-alerting.yaml)** contendo os **arquivos de regras de alerta**.
 
-`kubectl apply -f ./k8s/configmap-alerting.yaml`
+`kubectl apply -f ./k8s/configmap-prometheus-alerting.yaml`
 
-Execute o comando baixo para implantar o configmap **[configmap-recording](./k8s/configmap-recording.yaml)** contendo os **arquivos de regras de gravação**.
+Execute o comando baixo para implantar o configmap **[configmap-prometheus-recording](./k8s/configmap-prometheus-recording.yaml)** contendo os **arquivos de regras de gravação**.
 
-`kubectl apply -f ./k8s/configmap-recording.yaml`
+`kubectl apply -f ./k8s/configmap-prometheus-recording.yaml`
 
-Execute o comando baixo para implantar o **[statefulset](./k8s/statefulset.yaml)**.
+Execute o comando baixo para implantar o **[statefulset-prometheus](./k8s/statefulset-prometheus.yaml)**.
 
 `kubectl apply -f ./k8s/statefulset.yaml`
 
-Execute o comando baixo para implantar o **[service](./k8s/service.yaml)**.
+Execute o comando baixo para implantar o **[svc-prometheus](./k8s/svc-prometheus.yaml)**.
 
-`kubectl apply -f ./k8s/service.yaml`
+`kubectl apply -f ./k8s/svc-prometheus.yaml`
 
-Execute o comando baixo para implantar o **[ingress](./k8s/ingress.yaml)**.
+Execute o comando baixo para implantar o **[ingress-prometheus](./k8s/ingress-prometheus.yaml)**.
 
-`kubectl apply -f ./k8s/ingress.yaml`
+`kubectl apply -f ./k8s/ingress-prometheus.yaml`
 
 Execute o comando baixo para implantar visualizar o **endereço ip** da exposição do Ingress, contindo no campo **ADDRESS**.
 

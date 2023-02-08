@@ -132,29 +132,29 @@ Download the **zipped archive** from **[repository](https://github.com/evertonga
 
 Unzip the file in your **workspace**.
 
-Run the command below to deploy the configmap **[configmap-settings](./k8s/configmap-settings.yaml)** containing the Prometheus run settings file.
+Run the command below to deploy the configmap **[configmap-prometheus-settings](./k8s/configmap-prometheus-settings.yaml)** containing the Prometheus run settings file.
 
-`kubectl apply -f ./k8s/configmap-settings.yaml`
+`kubectl apply -f ./k8s/configmap-prometheus-settings.yaml`
 
-Run the command below to deploy the configmap **[configmap-alerting](./k8s/configmap-alerting.yaml)** containing the **alert rules files**.
+Run the command below to deploy the configmap **[configmap-prometheus-alerting](./k8s/configmap-prometheus-alerting.yaml)** containing the **alert rules files**.
 
-`kubectl apply -f ./k8s/configmap-alerting.yaml`
+`kubectl apply -f ./k8s/configmap-prometheus-alerting.yaml`
 
-Run the command below to deploy the configmap **[configmap-recording](./k8s/configmap-recording.yaml)** containing the **recording rules files**.
+Run the command below to deploy the configmap **[configmap-prometheus-recording](./k8s/configmap-prometheus-recording.yaml)** containing the **recording rules files**.
 
-`kubectl apply -f ./k8s/configmap-recording.yaml`
+`kubectl apply -f ./k8s/configmap-prometheus-recording.yaml`
 
-Run the command below to deploy **[statefulset](./k8s/statefulset.yaml)**.
+Run the command below to deploy **[statefulset-prometheus](./k8s/statefulset-prometheus.yaml)**.
 
-`kubectl apply -f ./k8s/statefulset.yaml`
+`kubectl apply -f ./k8s/statefulset-prometheus.yaml`
 
-Run the command below to deploy **[service](./k8s/service.yaml)**.
+Run the command below to deploy **[svc-prometheus](./k8s/svc-prometheus.yaml)**.
 
-`kubectl apply -f ./k8s/service.yaml`
+`kubectl apply -f ./k8s/svc-prometheus.yaml`
 
-Run the command below to deploy **[ingress](./k8s/ingress.yaml)**.
+Run the command below to deploy **[ingress-prometheus](./k8s/ingress-prometheus.yaml)**.
 
-`kubectl apply -f ./k8s/ingress.yaml`
+`kubectl apply -f ./k8s/ingress-prometheus.yaml`
 
 Run the command below to deploy view the **ip address** of the Ingress display contained in the **ADDRESS** field.
 

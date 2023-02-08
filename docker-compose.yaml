@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  prometheus:
+    image: evertongava/prometheus:2.41.0
+    ports:
+      - "9090:9090"
+    expose:
+      - "9090"
+    configs:
+      - source: prometheus-config
+        target: /etc/prometheus/prometheus.yml
+        uid: "1000"
+        gid: "4"
+        mode: 0400
+    volumes:
+      - prometheus-data:/var/data/prometheus/
+      - ./alerting:/etc/prometheus/alerting/
+      - ./recording:/etc/prometheus/recording/
+volumes:
+  prometheus-data:
+    driver: local
+configs:
+  prometheus-config:
+    file: ./prometheus.yml

@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: prometheus
+  serviceName: "svc-prometheus"
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      securityContext:
+        fsGroup: 472
+        supplementalGroups:
+          - 0
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: prometheus
+        image: evertongava/prometheus:2.41.0
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 250m
+            memory: 500Mi
+        volumeMounts:
+        - name: configmap-prometheus-settings
+          mountPath: /etc/prometheus/prometheus.yml
+          subPath: prometheus.yml
+        - name: configmap-prometheus-recording
+          mountPath: /etc/prometheus/recording/
+        - name: configmap-prometheus-alerting
+          mountPath: /etc/prometheus/alerting/
+        - name: pvc-prometheus-data
+          mountPath: /var/data/prometheus
+        ports:
+        - containerPort: 9090
+          name: prometheus
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            scheme: HTTP
+            port: 9090
+            path: /
+          initialDelaySeconds: 10
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 2
+        livenessProbe:
+          failureThreshold: 3
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          tcpSocket:
+            port: 9090
+          timeoutSeconds: 1
+      volumes:
+        - name: configmap-prometheus-settings
+          configMap:
+            name: configmap-prometheus-settings
+            defaultMode: 420
+        - name: configmap-prometheus-recording
+          configMap:
+            name: configmap-prometheus-recording
+            defaultMode: 420
+        - name: configmap-prometheus-alerting
+          configMap:
+            name: configmap-prometheus-alerting
+            defaultMode: 420
+  volumeClaimTemplates:
+  - metadata:
+      name: pvc-prometheus-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 500Mi
